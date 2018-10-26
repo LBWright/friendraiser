@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 5500;
 
 const app = express();
 app.use(express.json());
-
 require('./api/public')(app);
+require('./api/restricted')(app);
 
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true,  })
