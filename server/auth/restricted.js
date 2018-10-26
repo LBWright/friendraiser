@@ -1,23 +1,19 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
+const keys = require('../config/keys')
 
 const restricted = (req, res, next) => {
-  const token = req.headers.authorization;
-  const secret = "this is the secret"; //pull this into it's own file
+  const token = req.headers.authorization
 
-  if(token){
-    jwt.verify(token, secret, (err, decodedToken) => {
+  if (token) {
+    jwt.verify(token, keys.jwt, (err, decodedToken) => {
       if (err) {
-        return res
-          .status(401)
-          .json({ message: 'Token was not decoded', err });
-      } 
-      next();
-    });
-
-  } 
-  else{
-    res.send({message: "Error in retrieving token."})
+        return res.status(401).json({ message: 'Token was not decoded', err })
+      }
+      next()
+    })
+  } else {
+    res.send({ message: 'Error in retrieving token.' })
   }
 }
 
-module.exports = restricted;
+module.exports = restricted
