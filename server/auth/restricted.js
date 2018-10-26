@@ -19,3 +19,5 @@ const restricted = (req, res, next) => {
     res.send({message: "Error in retrieving token."})
   }
 }
+
+module.exports = restricted;
