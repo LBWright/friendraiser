@@ -2,6 +2,9 @@ const express = require('express')
 const User = require('../../models/User')
 const Task = require('../../models/Task')
 const Supporter = require('../../models/Supporter')
+const Support = require('../../models/Support')
+const Meeting = require('../../models/Meeting')
+const Action = require('../../models/Action')
 
 const router = express()
 
@@ -63,4 +66,32 @@ router.get('/:id/supporters', (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
+// User -> Support Route
+router.get('/:id/support', (req, res) => {
+  const { id } = req.params
+
+  Support.find({ user: id })
+    .then(support => res.json(support))
+    .catch(err => res.status(500).json(err))
+})
+
+// User -> Meetings Route
+
+router.get('/:id/meetings', (req, res) => {
+  const { id } = req.params
+
+  Meeting.find({ user: id })
+    .then(meetings => res.json(meetings))
+    .catch(err => res.status(500).json(err))
+})
+
+// User -> Actions Route
+
+router.get('/:id/actions', (req, res) => {
+  const { id } = req.params
+
+  Action.find({ user: id })
+    .then(actions => res.json(actions))
+    .catch(err => res.status(500).json(err))
+})
 module.exports = router
