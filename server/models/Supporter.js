@@ -28,6 +28,9 @@ const supporterSchema = new Schema({
     required: true,
     default: false
   },
+  joinDate: {
+    type: Date
+  },
   likelihood: {
     type: String
   },

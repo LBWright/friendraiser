@@ -30,7 +30,7 @@ router.put('/:id', (req, res) => {
   const { id } = req.params
   const updated = { ...req.body }
 
-  Task.findByIdAndUpdate(id, updated)
+  Task.findOneAndUpdate({ _id: id }, updated)
     .then(task => {
       if (!task) {
         return res.status(404).json({ message: 'task not found' })
