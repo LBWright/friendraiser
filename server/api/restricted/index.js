@@ -1,7 +1,7 @@
 const userRoutes = require('./userRoutes')
 const taskRoutes = require('./taskRoutes')
 const supporterRoutes = require('./supporterRoutes')
-const supportRoutes = require('./supporterRout')
+const supportRoutes = require('./supportRoutes')
 const actionRoutes = require('./actionRoutes')
 const meetingRoutes = require('./meetingRoutes')
 
