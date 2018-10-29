@@ -1,5 +1,6 @@
 const express = require('express')
 const User = require('../../models/User')
+const Task = require('../../models/Task')
 
 const router = express()
 
@@ -38,6 +39,16 @@ router.delete('/:id', (req, res) => {
 
   User.findOneAndDelete({ _id: id })
     .then(user => res.status(200).json(user))
+    .catch(err => res.status(500).json(err))
+})
+
+// User -> Tasks Route
+
+router.get('/:id/tasks', (req, res) => {
+  const { id } = req.params
+
+  Task.find({ user: id })
+    .then(tasks => res.status(200).json(tasks))
     .catch(err => res.status(500).json(err))
 })
 
