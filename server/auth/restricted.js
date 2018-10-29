@@ -12,7 +12,7 @@ const restricted = (req, res, next) => {
       next()
     })
   } else {
-    res.send({ message: 'Error in retrieving token.' })
+    res.send({ message: 'No token recieved' })
   }
 }
 

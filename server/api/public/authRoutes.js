@@ -8,7 +8,9 @@ const User = require('../../models/User')
 const router = express()
 
 router.get('/', restricted, (req, res) => {
-  res.status(200).json({ msg: 'Auth' })
+  res
+    .status(200)
+    .json({ msg: "Congrats. You've hit the restricted test route" })
 })
 
 router.post('/login', (req, res) => {

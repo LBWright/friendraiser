@@ -13,8 +13,32 @@ router.get('/:id', (req, res) => {
   const { id } = req.params
 
   User.findOne({ _id: id })
-    .then(user => res.json(user))
+    .then(user => {
+      res.status(200).json(user)
+    })
     .catch(err => res.json(err))
+})
+
+router.put('/:id', (req, res) => {
+  const { id } = req.params
+  const updated = { ...req.body }
+
+  User.findByIdAndUpdate(id, updated)
+    .then(user => {
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' })
+      }
+      res.status(201).json(user)
+    })
+    .catch(err => res.status(500).json(err))
+})
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params
+
+  User.findOneAndDelete({ _id: id })
+    .then(user => res.status(200).json(user))
+    .catch(err => res.status(500).json(err))
 })
 
 module.exports = router
