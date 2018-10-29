@@ -94,4 +94,5 @@ router.get('/:id/actions', (req, res) => {
     .then(actions => res.json(actions))
     .catch(err => res.status(500).json(err))
 })
+
 module.exports = router

@@ -1,5 +1,7 @@
 const express = require('express')
 const Supporter = require('../../models/Supporter')
+const Action = require('../../models/Action')
+const Meeting = require('../../models/Meeting')
 
 const router = express()
 
@@ -41,6 +43,22 @@ router.delete('/:id', (req, res) => {
   const { id } = req.params
   Supporter.findOneAndDelete({ _id: id })
     .then(user => res.json(user))
+    .catch(err => res.status(500).json(err))
+})
+
+router.get('/:id/meetings', (req, res) => {
+  const { id } = req.params
+
+  Meeting.find({ supporter: id })
+    .then(meetings => res.json(meetings))
+    .catch(err => res.status(500).json(err))
+})
+
+router.get('/:id/actions', (req, res) => {
+  const { id } = req.params
+
+  Action.find({ supporter: id })
+    .then(actions => res.json(actions))
     .catch(err => res.status(500).json(err))
 })
 
