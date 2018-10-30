@@ -10,6 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(cors()) // will need to whitelist cors based on env vars
 app.use(helmet())
+app.get('/', (req, res) => res.json({ msg: 'server up!' }))
 require('./api/public')(app)
 require('./api/restricted')(app)
 

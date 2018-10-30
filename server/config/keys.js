@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV === 'production') {
   module.exports = require('./prod')
-} else {
-  // Change to dev env
+} else if (process.env.NODE_ENV === 'local') {
   module.exports = require('./local')
+} else {
+  module.exports = require('./dev')
 }

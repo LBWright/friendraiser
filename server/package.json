@@ -5,7 +5,11 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "dev": "NODE_ENV=development nodemon app.js",
+    "local": "NODE_ENV=local nodemon app.js",
+    "deploy": "NODE_ENV=production netlify deploy --prod",
+    "deploy:dev": "NODE_ENV=development heroku deploy",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "Logan Wright",

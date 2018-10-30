@@ -7,6 +7,10 @@ const User = require('../../models/User')
 
 const router = express()
 
+router.get('/test', (req, res) => {
+  return res.json({ msg: 'auth testing' })
+})
+
 router.get('/', restricted, (req, res) => {
   res
     .status(200)
